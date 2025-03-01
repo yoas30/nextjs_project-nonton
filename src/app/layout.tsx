@@ -1,6 +1,11 @@
+
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider"
+import { ModeToggle } from "@/components/ModeToogle";
 import "./globals.css";
+import { Link } from "lucide-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,7 +30,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="p-4 flex gap-12 items-center font-bold">
+              <ModeToggle />
+              <Link 
+                href={'/videos'} 
+                className="bg-slate-200 p-2 rounded-md dark:text-green-400 text-yellow-400">
+                  Nonton Project Gue
+              </Link>
+            </div>
+            {children}
+          </ThemeProvider>
       </body>
     </html>
   );
