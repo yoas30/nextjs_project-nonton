@@ -1,13 +1,13 @@
 import VideoItem from "./VideoItem"
 
-export default function VideoList(){
+export default function VideoList({videos}:{videos:any}){
   return (
     <div className="grid grid-cols-5 gap-8">
             {/* map untuk looping dalam pemrosesan */}
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((video:any) => 
+        {videos.items.map((video:any) => 
         {
-            return <div key={video}>
-                    <VideoItem />  
+            return <div key={video.id.videoId}>
+                    <VideoItem video={video}/>  
                 </div>
         }
         )}
